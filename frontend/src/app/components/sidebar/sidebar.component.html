@@ -1,0 +1,70 @@
+<div class="logo">
+    <a class="simple-text" routerLink="/">
+        <span class="material-icons" style="color:#f44336; font-size: x-large" title="Home of 365 boring courses to make your year perfect.">cast_for_education</span>
+        Courses 365
+    </a>
+</div>
+<div class="sidebar-wrapper">
+  <div *ngIf="isMobileMenu()">
+    <form class="navbar-form">
+      <span class="bmd-form-group">
+        <div class="input-group no-border">
+          <input type="text" value="" class="form-control" placeholder="Search...">
+          <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+            <i class="material-icons">search</i>
+            <div class="ripple-container"></div>
+          </button>
+        </div>
+      </span>
+    </form>
+    <ul class="nav navbar-nav nav-mobile-menu">
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">
+                <i class="material-icons">dashboard</i>
+                <p>
+                    <span class="d-lg-none d-md-block">Stats</span>
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">
+                <i class="material-icons">person</i>
+                <p>
+                    <span class="d-lg-none d-md-block" routerLink="/profile">Account</span>
+                </p>
+            </a>
+        </li>
+    </ul>
+  </div>
+    <ul class="nav">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+            <a class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+        <li class="nav-item"><!---->
+            <a data-toggle="collapse" class="nav-link" href="#pages" aria-expanded="false">
+                <i class="material-icons">image</i><p>Other examples<b class="caret"></b></p>
+            </a><!---->
+            <div class="collapse" id="pages" style="">
+                <ul class="nav">
+                    <li routerlinkactive="active" class="nav-item"><a class="nav-link" routerLink="/notifications">
+                        <span class="sidebar-mini">P</span><span class="sidebar-normal">Notifications</span></a>
+                    </li>
+                    <li routerlinkactive="active" class="nav-item"><a class="nav-link" routerLink="/typography">
+                        <span class="sidebar-mini">T</span><span class="sidebar-normal">Typography</span></a>
+                    </li>
+                    <li routerlinkactive="active" class="nav-item"><a class="nav-link" routerLink="/icons">
+                        <span class="sidebar-mini">I</span><span class="sidebar-normal">Icons</span></a>
+                    </li>
+                    <li routerlinkactive="active" class="nav-item"><a class="nav-link" routerLink="/maps">
+                        <span class="sidebar-mini">M</span><span class="sidebar-normal">Maps</span></a>
+                    </li>
+                </ul>
+            </div><!---->
+        </li>
+    </ul>
+
+
+</div>

@@ -1,0 +1,38 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Courses</h4>
+                        <p class="card-category">Watch one course a day to make your mind rock! This table is rendered with simple loop without CDK datasource.</p>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-hover mat-table full-width-table">
+                            <thead>
+                            <tr class="mat-header-row">
+                                <th class='mat-header-cell'>Id</th>
+                                <th class='mat-header-cell'>Code</th>
+                                <th class='mat-header-cell'>Name</th>
+                                <th class='mat-header-cell'>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="mat-row" *ngFor="let course of courses">
+                                <td class="mat-cell">{{course.id}}</td>
+                                <td class="mat-cell">{{course.code}}</td>
+                                <td class="mat-cell">{{course.name}}</td>
+                                <td class="mat-cell">{{course.description.substring(0, 100)}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <mat-paginator #paginator [pageSizeOptions]="[10, 25, 100]" [pageSize]="10" [length]="totalElements"
+                                       (page)="nextPage($event)">
+
+                        </mat-paginator>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
