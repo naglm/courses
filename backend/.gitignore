@@ -1,0 +1,13 @@
+/target/
+/.mvn/
+/.idea/
+/build.gradle
+/mvnw
+/mvnw.cmd
+/settings.gradle
+/gradle/
+/src/main/frontend/node_modules/
+/src/main/frontend/dist/
+/h2.mv.db
+/h2.trace.db
+/courses.iml

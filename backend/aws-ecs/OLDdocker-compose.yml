@@ -1,0 +1,49 @@
+version: '2'
+services:
+  courses-mysql:
+    image: mysql:latest
+    cpu_shares: 100
+    mem_limit: 262144000
+    restart: always
+    container_name: "courses-mysql"
+    volumes:
+      - "/db:/var/lib/mysql"
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=courses
+      - MYSQL_USER=courses-user
+      - MYSQL_PASSWORD=changeit
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: courses
+        awslogs-region: eu-central-1
+        awslogs-stream-prefix: mysql
+  courses-service:
+    image: naglm/courses:latest
+    #build: .
+    cpu_shares: 100
+    mem_limit: 262144000
+    links:
+      - courses-mysql
+    container_name: "courses-service"
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_PORT=3307
+      - DB_NAME=courses
+      - DB_HOST=mysql
+      - MYSQL_USER=courses-user
+      - MYSQL_USER_PASSWORD=changeit
+      - SPRING_PROFILES_ACTIVE=prod
+    depends_on:
+      - courses-mysql
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: courses
+        awslogs-region: eu-central-1
+        awslogs-stream-prefix: service
