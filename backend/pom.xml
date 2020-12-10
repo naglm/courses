@@ -64,7 +64,13 @@
       <artifactId>spring-boot-devtools</artifactId>  
       <scope>runtime</scope>  
       <optional>true</optional> 
-    </dependency>  
+    </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>9.4-1206-jdbc42</version>
+      <scope>runtime</scope>
+    </dependency>
     <dependency> 
       <groupId>com.h2database</groupId>  
       <artifactId>h2</artifactId>
@@ -107,34 +113,6 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
           <imageName>naglm/courses:${project.version}</imageName>
-        </configuration>
-      </plugin>  
-      <plugin>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.11.0</version>
-        <configuration>
-          <schemaVersion>V2</schemaVersion>
-          <subscriptionId>77d3c54c-09e7-4b9c-b248-dc498b1e6019</subscriptionId>
-          <resourceGroup>serving-web-content-1601888309867-rg</resourceGroup>
-          <appName>serving-web-content-1601888309867</appName>
-          <pricingTier>P1v2</pricingTier>
-          <region>westeurope</region>
-          <runtime>
-            <os>linux</os>
-            <javaVersion>jre8</javaVersion>
-            <webContainer>jre8</webContainer>
-          </runtime>
-          <deployment>
-            <resources>
-              <resource>
-                <directory>${project.basedir}/target</directory>
-                <includes>
-                  <include>*.jar</include>
-                </includes>
-              </resource>
-            </resources>
-          </deployment>
         </configuration>
       </plugin>
     </plugins> 

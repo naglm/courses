@@ -1,27 +1,26 @@
-# Spring Boot & Angular showcase
+# Spring Boot & Angular showcase app
 
-Check a live demo running at https://courses365.herokuapp.com/ 
+Check out  live demo running at https://courses365.herokuapp.com/ 
+ * You may need to wait a while until Heroku free dyno goes up  
  * Log in credentials: admin  / admin
 
-# Project notes  
+# Project structure
+It's a Maven project with the following structure: 
+```
+courses     - parent project
+└──backend  - Spring Boot backend
+└──frontend - Angular frontend
+ ```  
 
-Running client locally: `ng serve`
+# Local development
+* Running frontend: `cd frontend` and then `ng serve`. Or run it from your IDE which detects it :)
+* Running server: `cd backend` and then `mvn spring-boot:run`. Or run it from your IDE which detects it :)
 
-Running server locally: `mvn spring-boot:run`
+# Building
+* Building an executable JAR with frontend & backend all-in-one: `mvn package`  
+* Building docker image with Spring: `mvn spring-boot:build-image` 
+* Running the docker image locally: `docker run -it -p8080:8080 naglm/courses:0.0.3-SNAPSHOT` (replace the current version)
+* Running all via docker-compose: `docker-compose up`
 
-Building the client: `npm run build` (builds Angular client with parameter`environment=production` and copies it to /resources/static) 
-
-Building the server: `mvn package`
-
-Building docker image with Spring: `mvn spring-boot:build-image` 
-
-Running the docker image locally: `docker run -it -p8080:8080 naglm/courses:0.0.3-SNAPSHOT` (replace the current version)
-
-Running all via docker-compose: `docker-compose up`
-
-Deploying to Heroku: `git push heroku master`
-
-Deploying to Azure: `mvn package azure-webapp:deploy` (currently not working due to Azure quotas...)
-
-Currently running on Heroku here: https://courses365.herokuapp.com/
-
+# Deploying 
+* Deploying to Heroku: `heroku deploy:jar backend/target/*.jar --app courses365`
