@@ -13,8 +13,12 @@ courses     - parent project
  ```  
 
 # Local development
-* Running frontend: `cd frontend` and then `ng serve`. Or run it from your IDE which detects it :)
-* Running server: `cd backend` and then `mvn spring-boot:run`. Or run it from your IDE which detects it :)
+* Starting dev environment: `docker-compose up`
+* Running frontend: `cd frontend` and then `ng serve`. Or run Angular CLI server from your IDE which detects it :)
+* Running server: `cd backend` and then `mvn spring-boot:run` with params:
+    * Spring profile `dev`: `--spring.profiles.active=dev`    
+    * set AWS S3 access key and secret key: `--amazon.s3.access-key=<your-access-key> --amazon.s3.secret-key=<your-secret-key>`
+    * The full command is: `mvn spring-boot:run --spring.profiles.active=dev --amazon.s3.access-key=<your-access-key> --amazon.s3.secret-key=<your-secret-key>`
 
 # Building
 * Building an executable JAR with frontend & backend all-in-one: `mvn package`  
