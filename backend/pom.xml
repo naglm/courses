@@ -13,6 +13,7 @@
   <description>Showcase project for Spring Boot &amp; Angular</description>
   <properties> 
     <java.version>1.8</java.version>
+    <amazon-sdk.version>1.11.917</amazon-sdk.version>
   </properties>
   <dependencies>
     <dependency>
@@ -75,7 +76,12 @@
       <groupId>com.h2database</groupId>  
       <artifactId>h2</artifactId>
       <scope>runtime</scope>
-    </dependency>  
+    </dependency>
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-java-sdk-s3</artifactId>
+      <version>${amazon-sdk.version}</version>
+    </dependency>
     <dependency> 
       <groupId>org.springframework.boot</groupId>  
       <artifactId>spring-boot-starter-test</artifactId>  
