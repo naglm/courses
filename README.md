@@ -13,7 +13,7 @@ courses     - parent project
  ```  
 
 # Local development
-* Starting dev environment: `docker-compose up`
+* Starting dev environment: `docker-compose up -d`
 * Running frontend: `cd frontend` and then `ng serve`. Or run Angular CLI server from your IDE which detects it :)
 * Running server: `cd backend` and then `mvn spring-boot:run` with params:
     * Spring profile `dev`: `--spring.profiles.active=dev`    
@@ -22,8 +22,8 @@ courses     - parent project
 
 # Building
 * Building an executable JAR with frontend & backend all-in-one: `mvn package`  
-* Building docker image with Spring: `mvn spring-boot:build-image` 
-* Running the docker image locally: `docker run -it -p8080:8080 naglm/courses:0.0.3-SNAPSHOT` (replace the current version)
+* Building docker image with Spring: `cd backend` and then `mvn spring-boot:build-image` 
+* Running the docker image locally: `docker run -it -p8080:8080 naglm/courses:0.0.6-SNAPSHOT` (replace the current version)
 * Running all via docker-compose: `docker-compose up`
 
 # Deploying 
