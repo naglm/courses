@@ -17,13 +17,26 @@ export class StudentListComponent implements OnInit {
   constructor(private studentService: StudentService) { }
 
   ngOnInit(): void {
+      this.loadData();
+  }
+
+  loadData() {
       this.studentService.findAll().subscribe(data => {
           this.students = data['content'];
           this.totalElements = data['totalElements'];
           this.showingFrom = data['pageable']['pageNumber'] * data['pageable']['pageSize'] + 1;
           this.showingTo = data['pageable']['pageNumber'] * data['pageable']['pageSize'] + data['pageable']['pageSize'];
-        }
-    );
+      });
   }
 
+  editStudent(id: string) {
+
+  }
+
+  deleteStudent(id: string) {
+    this.studentService.deleteStudent(id).subscribe(value => {
+        console.log("Deleted student " + id);
+        this.loadData();
+    });
+  }
 }

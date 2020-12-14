@@ -27,10 +27,10 @@
                                         <td><a href="mailto:{{ student.email }}">{{ student.email }}</a></td>
                                         <td></td>
                                         <td>
-                                            <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                                            <button (click)="editStudent(student.id)" class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
                                         </td>
                                         <td>
-                                            <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                                            <button (click)="deleteStudent(student.id)" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
                                         </td>
                                     </tr>
                                 </tbody>
